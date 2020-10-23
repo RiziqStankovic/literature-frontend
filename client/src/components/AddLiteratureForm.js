@@ -1,13 +1,15 @@
 import React, { useState, useContext } from 'react';
+import { useMutation } from 'react-query';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { BiBookAdd } from 'react-icons/bi';
 import { CgAttachment, CgOverflow } from 'react-icons/cg';
-import AlertModal from './AlertModal';
-import Loading from './Loading';
 import BeatLoader from 'react-spinners/BeatLoader';
 
+import { Context } from '../context/Context';
+import Loading from './Loading';
+import AlertModal from './AlertModal';
+
 import { API } from '../config/config';
-import { useMutation } from 'react-query';
 
 import pdfFile from '../assets/68-194-1-PB.pdf';
 
@@ -17,7 +19,8 @@ const override = {
   borderColor: 'red',
 };
 
-const AddLiteratureForm = () => {
+const AddLiteratureForm = ({ type }) => {
+  const [state] = useContext(Context);
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [showErrorAlert, setShowErrorAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -29,6 +32,7 @@ const AddLiteratureForm = () => {
   const [formData, setFormData] = useState({
     title: '',
     author: '',
+    checked: false,
     publication: '',
     pages: '',
     isbn: '',
@@ -37,7 +41,7 @@ const AddLiteratureForm = () => {
 
   const [fileName, setFileName] = useState('');
 
-  const { title, author, publication, pages, isbn, file } = formData;
+  const { title, author, checked, publication, pages, isbn, file } = formData;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -131,8 +135,27 @@ const AddLiteratureForm = () => {
             required
             placeholder="Author"
             onChange={(e) => handleChange(e)}
+            disabled={checked}
           />
         </Form.Group>
+        {type === 'user' && (
+          <Form.Group>
+            <Form.Check
+              type="checkbox"
+              value={state.user.fullName}
+              label="Me as Author"
+              onChange={(e) => {
+                if (e.target.checked)
+                  setFormData({
+                    ...formData,
+                    author: e.target.value,
+                    checked: true,
+                  });
+                else setFormData({ ...formData, author: '', checked: false });
+              }}
+            />
+          </Form.Group>
+        )}
         <Form.Group>
           <Form.Control
             type="text"
@@ -140,7 +163,6 @@ const AddLiteratureForm = () => {
             name="publication"
             placeholder="Publication Date"
             onFocus={(e) => (e.target.type = 'month')}
-            // onBlur={(e) => (e.target.type = 'text')}
             onChange={(e) => handleChange(e)}
           />
         </Form.Group>

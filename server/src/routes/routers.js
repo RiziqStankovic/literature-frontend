@@ -6,7 +6,7 @@ const { upload } = require('../middlewares/uploadFile');
 
 const { login, register, getUser } = require('../controllers/auth');
 
-const { updateUser } = require('../controllers/user');
+const { getUsers, updateUser } = require('../controllers/user');
 
 const {
   getLiteratures,
@@ -27,6 +27,7 @@ router.post('/login', login);
 router.post('/register', register);
 router.get('/validate', isAuth, getUser);
 
+router.get('/users', isAuth, isAdmin, getUsers);
 router.patch('/user/:id', isAuth, upload('photo'), updateUser);
 
 router.get('/literatures?', isAuth, getLiteratures);

@@ -16,12 +16,15 @@ import UserNavBar from './components/UserNavBar';
 // pages
 import Landing from './pages/Landing';
 import Home from './pages/Home';
+import Search from './pages/Search';
 import Profile from './pages/Profile';
 import MyCollection from './pages/MyCollection';
 import AddLiterature from './pages/AddLiterature';
 import Detail from './pages/Detail';
-import Search from './pages/Search';
-import Admin from './pages/Admin';
+import Read from './pages/Read';
+import Dashboard from './pages/Admin/Dashboard';
+import VerifyBook from './pages/Admin/VerifyBook';
+import AdminAddLiterature from './pages/Admin/AddLiterature';
 
 if (localStorage.token) {
   setToken(localStorage.token);
@@ -55,17 +58,19 @@ const App = () => {
         <Route
           path={[
             '/home',
+            '/search',
             '/profile',
             '/my-collection',
             '/add-literature',
             '/detail',
-            '/search',
+            '/read',
           ]}
         >
           <Container>
             <UserNavBar />
             <Switch>
               <PrivateRoute exact path="/home" component={Home} />
+              <PrivateRoute exact path="/search" component={Search} />
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute
                 exact
@@ -78,7 +83,7 @@ const App = () => {
                 component={AddLiterature}
               />
               <PrivateRoute exact path="/detail/:id" component={Detail} />
-              <PrivateRoute exact path="/search" component={Search} />
+              <PrivateRoute exact path="/read" component={Read} />
             </Switch>
           </Container>
         </Route>
@@ -87,7 +92,13 @@ const App = () => {
 
           <Switch>
             <Route exact path="/" component={Landing} />
-            <AdminRoute exact path="/admin" component={Admin} />
+            <AdminRoute exact path="/admin" component={Dashboard} />
+            <AdminRoute exact path="/admin/verify" component={VerifyBook} />
+            <AdminRoute
+              exact
+              path="/admin/add-literature"
+              component={AdminAddLiterature}
+            />
           </Switch>
         </Route>
       </Switch>

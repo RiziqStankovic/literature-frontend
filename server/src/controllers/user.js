@@ -1,5 +1,22 @@
 const { User } = require('../../models');
 
+exports.getUsers = async (req, res) => {
+  try {
+    const data = await User.findAll();
+    res.send({
+      status: 'success',
+      message: 'Users fetched successfully',
+      data,
+    });
+  } catch (error) {
+    res.status(500).send({
+      status: 'error',
+      message: 'Internal Server Error',
+      code: 500,
+    });
+  }
+};
+
 exports.updateUser = async (req, res) => {
   try {
     const { id } = req.params;

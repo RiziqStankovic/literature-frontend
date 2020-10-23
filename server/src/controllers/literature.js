@@ -4,7 +4,7 @@ const Joi = require('joi');
 const { Op } = require('sequelize');
 
 exports.getLiteratures = async (req, res) => {
-  const { id, title, year } = req.query;
+  const { id, title, from, to } = req.query;
   console.log(title);
   try {
     const data = await Literatures.findAll({
@@ -24,7 +24,7 @@ exports.getLiteratures = async (req, res) => {
               },
               {
                 year: {
-                  [Op.gte]: year,
+                  [Op.between]: [from || '0', to || '2020'],
                 },
               },
             ],
@@ -161,7 +161,7 @@ exports.addLiterature = async (req, res) => {
       ...req.body,
       userId: req.user.id,
       file: req.file.filename,
-      status: 'Pending',
+      status: req.user.role === 'admin' ? 'Approved' : 'Pending',
     });
 
     const data = await Literatures.findOne({

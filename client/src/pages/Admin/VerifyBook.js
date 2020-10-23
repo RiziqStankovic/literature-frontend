@@ -3,12 +3,12 @@ import { Table, DropdownButton, Dropdown } from 'react-bootstrap';
 import { BsChevronLeft } from 'react-icons/bs';
 import { useQuery } from 'react-query';
 
-import { API } from '../config/config';
+import { API } from '../../config/config';
 
-import AddedLiteratures from '../components/AddedLiteratures';
-import Loading from '../components/Loading';
+import AddedLiteratures from '../../components/AddedLiteratures';
+import Loading from '../../components/Loading';
 
-const Admin = () => {
+const VerifyBook = () => {
   const [selected, setSelected] = useState('');
   const { isLoading, data, refetch } = useQuery('getAdminLiteratures', () =>
     API.get('/literatures?year=0')
@@ -78,4 +78,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default VerifyBook;

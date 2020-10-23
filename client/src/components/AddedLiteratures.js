@@ -67,7 +67,7 @@ const AddedLiteratures = (props) => {
         <>
           <Button
             variant="danger"
-            className="cancel mr-2"
+            className="reject mr-2"
             onClick={() => reject()}
           >
             Reject

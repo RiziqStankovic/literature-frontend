@@ -6,7 +6,7 @@ const AddLiterature = () => {
   return (
     <div>
       <h2>Add Literatures</h2>
-      <AddLiteratureForm />
+      <AddLiteratureForm type="user" />
     </div>
   );
 };

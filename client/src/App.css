@@ -267,6 +267,29 @@ input[type='number']::-webkit-outer-spin-button {
   margin: 0;
 }
 
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #727272;
+}
+
+/* Search */
+.card {
+  border: 1px solid #727272;
+  background-color: #454545;
+}
+
+.card-header {
+  padding: 5px 10px;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+small {
+  text-align: center;
+}
+
 /* Literature */
 
 .literature-list {
@@ -396,7 +419,7 @@ td:last-child {
   background-color: #0acf83;
 }
 
-.cancel {
+.reject {
   background-color: #ff0742;
 }
 
@@ -407,13 +430,53 @@ td:last-child {
 }
 
 .text-approved {
-  color: #0acf83;
+  color: #0acf83 !important;
 }
 
 .text-cancel {
-  color: #ff0742;
+  color: #ff0742 !important;
 }
 
 #addSuccess {
   width: 750px;
+}
+
+.admin .col {
+  /* border: 1px solid #af2e1c; */
+  background-color: #161616;
+  border-radius: 5px;
+  color: white;
+  margin: 3px;
+  padding: 15px;
+  text-align: center;
+  display: grid;
+  align-content: center;
+  height: 150px;
+}
+
+.admin .row:nth-child(odd) .col {
+  height: 50px;
+}
+
+.admin h3,
+.admin h4,
+.admin p {
+  margin: 0;
+}
+
+.admin h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.admin h4 {
+  font-size: 16px;
+}
+
+.admin p {
+  font-size: 36px;
+}
+
+.col.approved {
+  color: green;
 }
