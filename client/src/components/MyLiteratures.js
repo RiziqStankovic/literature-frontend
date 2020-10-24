@@ -6,7 +6,7 @@ import { API } from '../config/config';
 
 import LiteraturesList from './LiteraturesList';
 
-import Loading from '../components/Loading';
+import { PageLoading } from '../components/Loading';
 
 const MyLiteratures = () => {
   const [state] = useContext(Context);
@@ -20,7 +20,7 @@ const MyLiteratures = () => {
     <div className="my-literatures mt-5">
       <h2 className="heading">My Literatures</h2>
       {isLoading ? (
-        <Loading />
+        <PageLoading />
       ) : (
         <LiteraturesList literatures={data.data.data} profile />
       )}

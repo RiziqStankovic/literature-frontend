@@ -8,7 +8,9 @@ import {
 } from 'react-bootstrap';
 import { Link, useRouteMatch, useHistory } from 'react-router-dom';
 import { Context } from '../context/Context';
-import { BiExit } from 'react-icons/bi';
+import { TiThList } from 'react-icons/ti';
+import { RiDashboardLine } from 'react-icons/ri';
+import { BiBookAdd, BiExit } from 'react-icons/bi';
 
 import logo from '../assets/logo.svg';
 
@@ -42,6 +44,27 @@ const NavBar = () => {
                     <Popover.Content>
                       <div
                         className="pop-item"
+                        onClick={() => history.push('/admin')}
+                      >
+                        <RiDashboardLine size="20px" clasName="icon" />
+                        <p className="ml-2">Dashboard</p>
+                      </div>
+                      <div
+                        className="pop-item"
+                        onClick={() => history.push('/admin/verify-book')}
+                      >
+                        <TiThList size="20px" clasName="icon" />
+                        <p className="ml-2">Verify Book</p>
+                      </div>
+                      <div
+                        className="pop-item"
+                        onClick={() => history.push('/admin/add-literature')}
+                      >
+                        <BiBookAdd size="20px" clasName="icon" />
+                        <p className="ml-2">Add Literature</p>
+                      </div>
+                      <div
+                        className="pop-item"
                         onClick={() =>
                           dispatch({
                             type: 'LOGOUT',
@@ -58,7 +81,6 @@ const NavBar = () => {
                 <img
                   src={`http://localhost:5000/photos/${state.user.photo}`}
                   style={style}
-                  className="nav-item"
                 />
               </OverlayTrigger>
             </Nav>

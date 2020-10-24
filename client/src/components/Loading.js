@@ -1,16 +1,20 @@
 import React from 'react';
-import { HashLoader } from 'react-spinners';
+import { HashLoader, BeatLoader } from 'react-spinners';
 
-const Loading = () => {
-  const override = {
-    display: 'block',
-    margin: '0 auto',
-    bordeColor: 'red',
-  };
+const override = {
+  display: 'block',
+  margin: '0 auto',
+  borderColor: 'none',
+};
+
+export const PageLoading = () => {
   return (
     <div
       style={{
+        position: 'absolute',
+        top: '0',
         height: '100vh',
+        width: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -26,4 +30,8 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export const ActionLoading = () => {
+  return (
+    <BeatLoader css={override} size={5} color={'#ffffff'} loading={true} />
+  );
+};

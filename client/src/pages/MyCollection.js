@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { Context } from '../context/Context';
 import { API } from '../config/config';
 
-import Loading from '../components/Loading';
+import { PageLoading } from '../components/Loading';
 import LiteraturesList from '../components/LiteraturesList';
 
 const MyCollection = () => {
@@ -22,7 +22,7 @@ const MyCollection = () => {
   }
 
   return isLoading ? (
-    <Loading />
+    <PageLoading />
   ) : (
     <div>
       <h2>My Collection</h2>

@@ -2,31 +2,19 @@ import React, { useState, useContext } from 'react';
 import { useMutation } from 'react-query';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { BiBookAdd } from 'react-icons/bi';
-import { CgAttachment, CgOverflow } from 'react-icons/cg';
-import BeatLoader from 'react-spinners/BeatLoader';
+import { CgAttachment } from 'react-icons/cg';
 
 import { Context } from '../context/Context';
-import Loading from './Loading';
 import AlertModal from './AlertModal';
+import { ActionLoading } from './Loading';
 
 import { API } from '../config/config';
-
-import pdfFile from '../assets/68-194-1-PB.pdf';
-
-const override = {
-  display: 'block',
-  margin: '0 auto',
-  borderColor: 'red',
-};
 
 const AddLiteratureForm = ({ type }) => {
   const [state] = useContext(Context);
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [showErrorAlert, setShowErrorAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
 
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -77,6 +65,10 @@ const AddLiteratureForm = ({ type }) => {
     formData.append('pages', pages);
     formData.append('isbn', isbn);
     formData.append('file', file);
+    formData.append(
+      'status',
+      state.user.role === 'admin' ? 'Approved' : 'Pending'
+    );
 
     try {
       setLoading(true);
@@ -97,7 +89,6 @@ const AddLiteratureForm = ({ type }) => {
         isbn: '',
         file: '',
       });
-      setFileName('');
       setShowErrorAlert(false);
     } catch (error) {
       console.log(error.response.data.message);
@@ -185,23 +176,31 @@ const AddLiteratureForm = ({ type }) => {
           />
         </Form.Group>
         <Form.Group>
+          <div
+            className="form-control"
+            onClick={() => document.getElementsByName('file')[0].click()}
+            style={{ width: 'max-content', cursor: 'pointer' }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              {file ? file.name : 'Attach File'}
+              <CgAttachment size="20px" className="ml-1" />
+            </div>
+          </div>
           <Form.File
-            id="custom-file-translate-html"
             name="file"
             accept=".pdf"
-            label={
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                {file ? file.name : 'Attach File'}
-                <CgAttachment size="20px" className="ml-1" />
-              </div>
-            }
             onChange={(e) => {
               setFormData({
                 ...formData,
                 file: !e.target.files[0] ? file : e.target.files[0],
               });
             }}
-            custom
+            style={{ display: 'none' }}
           />
         </Form.Group>
 
@@ -211,12 +210,7 @@ const AddLiteratureForm = ({ type }) => {
 
         <Button variant="primary" type="submit" className="float-right">
           {loading ? (
-            <BeatLoader
-              css={override}
-              size={5}
-              color={'#ffffff'}
-              loading={loading}
-            />
+            <ActionLoading />
           ) : (
             <>
               Add Literature <BiBookAdd size="20px" />
@@ -228,7 +222,11 @@ const AddLiteratureForm = ({ type }) => {
       <AlertModal
         show={showSuccessAlert}
         onHide={() => setShowSuccessAlert(false)}
-        label="Thank you for adding literature to our website, please wait 1 x 24 hours to verify"
+        label={
+          type === 'admin'
+            ? 'Book added successfully'
+            : 'Thank you for adding your own book to our website, please wait 1 x 24 hours to verify whether this book is your writing'
+        }
       />
     </div>
   );

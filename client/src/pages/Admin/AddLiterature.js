@@ -1,13 +1,14 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import AddLiteratureForm from '../../components/AddLiteratureForm';
 
 const AddLiterature = () => {
   return (
     <div className="admin">
-      <div class="admin-wrapper">
+      <Container>
         <h2>Add Literatures</h2>
         <AddLiteratureForm type="admin" />
-      </div>
+      </Container>
     </div>
   );
 };

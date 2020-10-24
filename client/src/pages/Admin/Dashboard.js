@@ -1,10 +1,10 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { useQuery } from 'react-query';
 
 import { API } from '../../config/config';
 
-import Loading from '../../components/Loading';
+import { PageLoading } from '../../components/Loading';
 
 const useQueryMultiple = () => {
   const res1 = useQuery('getAllDatas', () => API.get('/literatures'));
@@ -23,10 +23,10 @@ const Dashboard = () => {
   const users = datas[1];
 
   return literatures.isLoading || users.isLoading ? (
-    <Loading />
+    <PageLoading />
   ) : (
     <div className="admin">
-      <div class="admin-wrapper">
+      <Container>
         <Row>
           <Col>
             <h3>Literatures</h3>
@@ -93,7 +93,7 @@ const Dashboard = () => {
             </p>
           </Col>
         </Row>
-      </div>
+      </Container>
     </div>
   );
 };

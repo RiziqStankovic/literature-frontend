@@ -6,7 +6,7 @@ import { Context } from '../context/Context';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-import BeatLoader from 'react-spinners/BeatLoader';
+import { ActionLoading } from './Loading';
 
 import { API, setToken } from '../config/config';
 
@@ -18,12 +18,6 @@ const schema = yup.object({
   phone: yup.string().min(6).required(),
   address: yup.string().min(6).required(),
 });
-
-const override = {
-  display: 'block',
-  margin: '0 auto',
-  borderColor: 'red',
-};
 
 const Register = (props) => {
   const [show, setShow] = useState(false);
@@ -232,16 +226,7 @@ const Register = (props) => {
               )}
 
               <Button variant="primary" type="submit" block>
-                {loading ? (
-                  <BeatLoader
-                    css={override}
-                    size={5}
-                    color={'#ffffff'}
-                    loading={loading}
-                  />
-                ) : (
-                  'Sign In'
-                )}
+                {loading ? <ActionLoading /> : 'Sign In'}
               </Button>
             </Form>
           )}

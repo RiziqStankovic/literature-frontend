@@ -93,7 +93,11 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Landing} />
             <AdminRoute exact path="/admin" component={Dashboard} />
-            <AdminRoute exact path="/admin/verify" component={VerifyBook} />
+            <AdminRoute
+              exact
+              path="/admin/verify-book"
+              component={VerifyBook}
+            />
             <AdminRoute
               exact
               path="/admin/add-literature"

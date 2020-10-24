@@ -2,7 +2,7 @@ import React, { useState, useContext, useCallback } from 'react';
 import { Context } from '../context/Context';
 import { API } from '../config/config';
 import { useMutation } from 'react-query';
-import { Modal, Form, Button } from 'react-bootstrap';
+import { Modal, Form, Button, Col } from 'react-bootstrap';
 import { CgAttachment } from 'react-icons/cg';
 
 import ImageCropper from './Cropper/ImageCropper';
@@ -91,12 +91,6 @@ const ChangeProfilePhoto = (props) => {
         {/* <h4 className="mb-4 sign">Change Profile Photo</h4> */}
 
         <Form onSubmit={(e) => handleSubmitImage(e)}>
-          {/* <input
-            type="file"
-            accept="image/*"
-            name="photo"
-            onChange={(e) => handleFileChange(e)}
-          /> */}
           {photo && (
             <>
               <ImageCropper
@@ -110,28 +104,42 @@ const ChangeProfilePhoto = (props) => {
               <br />
             </>
           )}
-          <div className="change-action">
-            <Form.Group className="custom-file-container m-0">
-              <Form.File
-                id="custom-file-translate-html"
-                name="photo"
-                label={
+
+          <Form.Row>
+            <Col>
+              <Form.Group className="custom-file-container m-0">
+                <div
+                  className="form-control"
+                  onClick={() => document.getElementsByName('photo')[0].click()}
+                  style={{ width: 'max-content', cursor: 'pointer' }}
+                >
                   <div style={{ display: 'flex', alignItems: 'center' }}>
                     Choose Photo
                     <CgAttachment size="20px" className="ml-1" />
                   </div>
-                }
-                onChange={(e) => handleFileChange(e)}
-                custom
-              />
-            </Form.Group>
-
-            {photo && (
-              <Button type="submit" variant="warning">
-                Save
-              </Button>
-            )}
-          </div>
+                </div>
+                <Form.File
+                  name="photo"
+                  accept="image/*"
+                  label={
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      Choose Photo
+                      <CgAttachment size="20px" className="ml-1" />
+                    </div>
+                  }
+                  style={{ display: 'none' }}
+                  onChange={(e) => handleFileChange(e)}
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              {photo && (
+                <Button type="submit" block>
+                  Save
+                </Button>
+              )}
+            </Col>
+          </Form.Row>
         </Form>
       </Modal.Body>
     </Modal>

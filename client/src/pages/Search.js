@@ -13,20 +13,21 @@ import { BiChevronDownCircle } from 'react-icons/bi';
 
 import SearchBar from '../components/SearchBar';
 import LiteraturesList from '../components/LiteraturesList';
-import Loading from '../components/Loading';
+import { PageLoading } from '../components/Loading';
 
 import { API } from '../config/config';
 
 const Search = ({ location }) => {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
+  const [sort, setSort] = useState('');
   const value = location.search.split('?q=')[1];
 
   const { isLoading, error, data: literatures, refetch } = useQuery(
     'searchLiterature',
     async () => {
       const { data } = await API.get(
-        `/literature?title=${value}&from=${from}&to=${to}`
+        `/literature?title=${value}&from=${from}&to=${to}&sort=${sort}`
       );
       const literatures = data.data;
       return literatures;
@@ -38,7 +39,7 @@ const Search = ({ location }) => {
   }, [value]);
 
   return isLoading || !literatures ? (
-    <Loading />
+    <PageLoading />
   ) : error ? (
     <h1>Error</h1>
   ) : (
@@ -47,7 +48,9 @@ const Search = ({ location }) => {
       <Row className="mt-5">
         <Col md={2}>
           <a
-            className="nav-link anytime"
+            className={
+              from === '' && to === '' ? 'nav-link active' : 'nav-link'
+            }
             onClick={async (e) => {
               e.preventDefault();
               await setFrom('');
@@ -57,16 +60,12 @@ const Search = ({ location }) => {
           >
             Anytime
           </a>
-          <Accordion defaultActiveKey="0">
+          <Accordion>
             <Card>
-              <Accordion.Toggle
-                as={Card.Header}
-                eventKey="1"
-                className="mr-auto"
-              >
+              <Accordion.Toggle as={Card.Header} eventKey="0">
                 Filter by Year <BiChevronDownCircle size="20px" />
               </Accordion.Toggle>
-              <Accordion.Collapse eventKey="1">
+              <Accordion.Collapse eventKey="0">
                 <Card.Body>
                   <Form
                     onSubmit={(e) => {
@@ -104,6 +103,38 @@ const Search = ({ location }) => {
                         </Button>
                       </Col>
                     </Form.Row>
+                  </Form>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+            <Card>
+              <Accordion.Toggle as={Card.Header} eventKey="1">
+                Sort by
+                <BiChevronDownCircle size="20px" />
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="1">
+                <Card.Body>
+                  <Form>
+                    <Form.Check
+                      type="radio"
+                      label="Title"
+                      name="sort"
+                      value="title"
+                      onChange={async () => {
+                        await setSort('title');
+                        refetch();
+                      }}
+                    />
+                    <Form.Check
+                      type="radio"
+                      label="Year"
+                      name="sort"
+                      value="year"
+                      onChange={async () => {
+                        await setSort('year');
+                        refetch();
+                      }}
+                    />
                   </Form>
                 </Card.Body>
               </Accordion.Collapse>

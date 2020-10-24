@@ -5,7 +5,7 @@
 }
 
 body {
-  height: 100vh;
+  /* height: 100vh; */
   background-color: #161616;
   color: white;
   font-family: 'Poppins', sans-serif;
@@ -35,7 +35,7 @@ h2 {
   font-family: 'Times New Roman', Times, serif;
   font-size: 36px;
   font-weight: bold;
-  margin: 20px 0 40px 0;
+  margin-bottom: 40px;
 }
 
 /* ------------------- */
@@ -48,7 +48,7 @@ nav {
 nav img {
   width: 200px;
   position: relative;
-  bottom: 7px;
+  /* bottom: 7px; */
 }
 
 nav#nav {
@@ -294,6 +294,7 @@ small {
 
 .literature-list {
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(4, 200px);
   justify-content: space-between;
 }
@@ -355,13 +356,16 @@ a.dropdown-item:hover {
 /* Admin */
 .admin {
   background-color: #f9f9f9;
-  height: 100%;
-  padding: 150px 70px 0px 70px;
+  height: 100vh;
+  width: 100%;
   color: black;
+  padding-top: 140px;
+  /* padding-bottom: 10px; */
 }
 
-.admin-wrapper {
-  height: 100vh;
+.admin.expand {
+  height: 100%;
+  padding-bottom: 50px;
 }
 
 th,
@@ -387,14 +391,15 @@ td {
   text-align: center;
 }
 
+td:nth-child(2) {
+  text-align: left;
+  /* width: 25%; */
+}
+/* 
 td:first-child {
   width: 3%;
 }
 
-td:nth-child(2) {
-  text-align: left;
-  width: 25%;
-}
 
 td:nth-last-child(2) {
   width: 10%;
@@ -402,10 +407,10 @@ td:nth-last-child(2) {
 
 td:last-child {
   width: 20%;
-}
+} */
 
 .approve,
-.cancel {
+.reject {
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -479,4 +484,39 @@ td:last-child {
 
 .col.approved {
   color: green;
+}
+
+/* Pop-over */
+.popover {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.popover-body {
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.pop-item {
+  display: flex;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pop-item p {
+  margin: 0;
+}
+
+.pop-item:hover {
+  background-color: #eeeeee;
+}
+
+@media only screen and (max-width: 768px) {
+  .literature-list {
+    display: grid;
+    border: 1px solid white;
+    width: 100%;
+    grid-template-columns: repeat(2, 200px);
+    justify-content: space-between;
+  }
 }

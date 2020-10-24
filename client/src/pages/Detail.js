@@ -12,7 +12,7 @@ import { Context } from '../context/Context';
 import { API } from '../config/config';
 
 // component
-import Loading from '../components/Loading';
+import { PageLoading } from '../components/Loading';
 import DetailItem from '../components/DetailItem';
 import AlertModal from '../components/AlertModal';
 
@@ -54,7 +54,7 @@ const Detail = () => {
   };
 
   return isLoading ? (
-    <Loading />
+    <PageLoading />
   ) : error ? (
     <h1>Error!</h1>
   ) : (

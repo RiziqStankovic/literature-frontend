@@ -6,25 +6,16 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { API, setToken } from '../config/config.js';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import BeatLoader from 'react-spinners/BeatLoader';
+
+import { ActionLoading } from './Loading';
 
 const schema = yup.object({
   email: yup.string().email().required(),
   password: yup.string().min(8).required(),
 });
 
-const override = {
-  display: 'block',
-  margin: '0 auto',
-  borderColor: 'red',
-};
-
 const Login = (props) => {
   const [show, setShow] = useState(false);
-  // const [formData, setFormData] = useState({
-  //   email: '',
-  //   password: '',
-  // });
 
   const [exist, setExist] = useState('');
   const [loading, setLoading] = useState(false);
@@ -164,16 +155,7 @@ const Login = (props) => {
                 )}
 
                 <Button variant="primary" type="submit" block>
-                  {loading ? (
-                    <BeatLoader
-                      css={override}
-                      size={5}
-                      color={'#ffffff'}
-                      loading={loading}
-                    />
-                  ) : (
-                    'Sign In'
-                  )}
+                  {loading ? <ActionLoading /> : 'Sign In'}
                 </Button>
               </Form>
             )}

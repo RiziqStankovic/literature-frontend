@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Table, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Table, DropdownButton, Dropdown, Container } from 'react-bootstrap';
 import { BsChevronLeft } from 'react-icons/bs';
 import { useQuery } from 'react-query';
 
 import { API } from '../../config/config';
 
 import AddedLiteratures from '../../components/AddedLiteratures';
-import Loading from '../../components/Loading';
+import { PageLoading } from '../../components/Loading';
 
 const VerifyBook = () => {
   const [selected, setSelected] = useState('');
@@ -14,10 +14,10 @@ const VerifyBook = () => {
     API.get('/literatures?year=0')
   );
   return isLoading ? (
-    <Loading />
+    <PageLoading />
   ) : (
-    <div className="admin">
-      <div class="admin-wrapper">
+    <div className="admin expand">
+      <Container>
         <DropdownButton
           title={
             <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -73,7 +73,7 @@ const VerifyBook = () => {
               ))}
           </tbody>
         </Table>
-      </div>
+      </Container>
     </div>
   );
 };
