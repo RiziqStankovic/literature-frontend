@@ -22,6 +22,7 @@ import MyCollection from './pages/MyCollection';
 import AddLiterature from './pages/AddLiterature';
 import Detail from './pages/Detail';
 import Read from './pages/Read';
+import NotFound from './pages/NotFound';
 import Dashboard from './pages/Admin/Dashboard';
 import VerifyBook from './pages/Admin/VerifyBook';
 import AdminAddLiterature from './pages/Admin/AddLiterature';
@@ -83,11 +84,11 @@ const App = () => {
                 component={AddLiterature}
               />
               <PrivateRoute exact path="/detail/:id" component={Detail} />
-              <PrivateRoute exact path="/read" component={Read} />
+              <PrivateRoute exact path="/read/:id" component={Read} />
             </Switch>
           </Container>
         </Route>
-        <Route path={['/', '/admin']}>
+        <Route path={['/', '/admin', '*']}>
           <NavBar />
 
           <Switch>
@@ -103,6 +104,7 @@ const App = () => {
               path="/admin/add-literature"
               component={AdminAddLiterature}
             />
+            <Route path="*" component={NotFound} />
           </Switch>
         </Route>
       </Switch>

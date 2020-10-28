@@ -70,6 +70,11 @@ a.active {
 
 a.nav-link {
   padding: 20px !important;
+  cursor: pointer;
+}
+
+a.left {
+  padding-left: 10px !important;
 }
 
 nav a:first-child {
@@ -233,7 +238,6 @@ input.form-control,
 select.form-control,
 textarea.form-control,
 div.form-control,
-label.custom-file-label,
 #basic-addon2 {
   background-color: #454545;
   border: 2px solid #727272;
@@ -280,6 +284,9 @@ input[type='number']::-webkit-outer-spin-button {
 
 .card-header {
   padding: 5px 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
 }
 
 .card-body {
@@ -297,6 +304,7 @@ small {
   width: 100%;
   grid-template-columns: repeat(4, 200px);
   justify-content: space-between;
+  grid-row-gap: 15px;
 }
 
 .literature-card {
@@ -306,6 +314,7 @@ small {
 .author {
   display: flex;
   justify-content: space-between;
+  column-gap: 5px;
 }
 
 /* Profile */
@@ -519,4 +528,11 @@ td:last-child {
     grid-template-columns: repeat(2, 200px);
     justify-content: space-between;
   }
+}
+
+.ui-datepicker-month,
+input[type='month']:focus {
+  background: #161616 !important;
+  border: 1px solid #454545 !important;
+  color: #fff !important;
 }

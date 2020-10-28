@@ -12,6 +12,13 @@ exports.getBookmarks = async (req, res) => {
           model: Literatures,
           as: 'literature',
           attributes: ['id', 'title', 'author', 'year', 'status'],
+          include: [
+            {
+              model: Bookmark,
+              as: 'bookmarks',
+              attributes: ['userId'],
+            },
+          ],
         },
       ],
       attributes: [],

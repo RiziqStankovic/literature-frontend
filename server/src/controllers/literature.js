@@ -32,13 +32,18 @@ exports.getLiteratures = async (req, res) => {
         ],
       },
 
-      order: [[sort || 'id', 'ASC']],
+      order: [[sort || 'id', sort === 'title' ? 'ASC' : 'DESC']],
 
       include: [
         {
           model: User,
           as: 'user',
           attributes: { exclude: ['password', 'createdAt', 'updatedAt'] },
+        },
+        {
+          model: Bookmark,
+          as: 'bookmarks',
+          attributes: ['userId'],
         },
       ],
       attributes: {

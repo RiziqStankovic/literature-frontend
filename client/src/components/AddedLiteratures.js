@@ -53,7 +53,7 @@ const AddedLiteratures = (props) => {
         <>
           <Button
             variant="danger"
-            className="cancel"
+            className="reject"
             onClick={() => deleteLiterature()}
           >
             Delete

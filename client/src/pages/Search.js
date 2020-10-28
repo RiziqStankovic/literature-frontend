@@ -49,7 +49,9 @@ const Search = ({ location }) => {
         <Col md={2}>
           <a
             className={
-              from === '' && to === '' ? 'nav-link active' : 'nav-link'
+              from === '' && to === ''
+                ? 'nav-link active left'
+                : 'nav-link left'
             }
             onClick={async (e) => {
               e.preventDefault();
@@ -107,6 +109,8 @@ const Search = ({ location }) => {
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
+          </Accordion>
+          <Accordion className="mt-2">
             <Card>
               <Accordion.Toggle as={Card.Header} eventKey="1">
                 Sort by

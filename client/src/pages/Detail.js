@@ -6,6 +6,7 @@ import {
   BsBookmarkPlus,
   BsBookmarkDash,
   BsCloudDownload,
+  BsChevronRight,
 } from 'react-icons/bs';
 
 import { Context } from '../context/Context';
@@ -74,20 +75,29 @@ const Detail = () => {
           >
             {literature.title}
           </p>
-          <p className="mt-3">{literature.author}</p>
-          <br />
-          <DetailItem
-            name="Publication date"
-            data={`${literature.month} ${literature.year}`}
-          />
-          <DetailItem name="Pages" data={literature.pages} />
-          <DetailItem name="ISBN" data={literature.isbn} style="text-danger" />
-          <br />
+          <p className="grey mt-3 mb-4" style={{ fontSize: 24 }}>
+            {literature.author}
+          </p>
+          <div className="mb-5">
+            <DetailItem
+              name="Publication date"
+              data={`${literature.month} ${literature.year}`}
+            />
+            <DetailItem name="Pages" data={literature.pages} />
+            <DetailItem
+              name="ISBN"
+              data={literature.isbn}
+              style={{ color: '#af2e1c' }}
+            />
+          </div>
           <Button
             href={`http://localhost:5000/files/${literature.file}`}
-            variant="primary"
+            className="mr-3"
           >
             Download <BsCloudDownload />
+          </Button>
+          <Button onClick={() => history.push(`/read/${literature.id}`)}>
+            Read <BsChevronRight />
           </Button>
         </Col>
         <Col md={1}>
