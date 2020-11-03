@@ -11,7 +11,7 @@ import { PageLoading } from '../../components/Loading';
 const VerifyBook = () => {
   const [selected, setSelected] = useState('');
   const { isLoading, data, refetch } = useQuery('getAdminLiteratures', () =>
-    API.get('/literatures?year=0')
+    API.get('/literatures')
   );
   return isLoading ? (
     <PageLoading />

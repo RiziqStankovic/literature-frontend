@@ -412,11 +412,11 @@ td:first-child {
 
 td:nth-last-child(2) {
   width: 10%;
-}
+} */
 
 td:last-child {
-  width: 20%;
-} */
+  width: 225px;
+}
 
 .approve,
 .reject {

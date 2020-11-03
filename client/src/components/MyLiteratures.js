@@ -13,7 +13,7 @@ const MyLiteratures = () => {
   const { id } = state.user;
 
   const { isLoading, data } = useQuery('getUserLiteratures', () =>
-    API.get(`/literatures?user=${id}`)
+    API.get(`/literatures?user=${id}&sort=status`)
   );
 
   return (
