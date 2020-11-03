@@ -29,7 +29,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       isbn: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       author: {
         type: Sequelize.STRING,

@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       month: DataTypes.STRING,
       year: DataTypes.STRING,
       pages: DataTypes.INTEGER,
-      isbn: DataTypes.INTEGER,
+      isbn: DataTypes.STRING,
       author: DataTypes.STRING,
       file: DataTypes.STRING,
       status: DataTypes.STRING,
