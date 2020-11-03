@@ -6,7 +6,7 @@ const LiteraturesList = ({ literatures, profile }) => {
   return !literatures ? (
     <h2>error</h2>
   ) : (
-    <div className="literature-list">
+    <div className="literature-list mb-5">
       {literatures
         .filter((literature) => {
           if (!profile) return literature.status === 'Approved';
