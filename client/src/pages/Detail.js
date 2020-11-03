@@ -10,7 +10,7 @@ import {
 } from 'react-icons/bs';
 
 import { Context } from '../context/Context';
-import { API } from '../config/config';
+import { API, fileURL, coverURL } from '../config/config';
 
 // component
 import { PageLoading } from '../components/Loading';
@@ -63,7 +63,7 @@ const Detail = () => {
       <Row>
         <Col md={5}>
           <img
-            src="http://localhost:5000/covers/cover.jpg"
+            src={`${coverURL}/${literature.file.split('.')[0]}.jpg`}
             alt="cover"
             style={cover}
           />
@@ -90,10 +90,7 @@ const Detail = () => {
               style={{ color: '#af2e1c' }}
             />
           </div>
-          <Button
-            href={`http://localhost:5000/files/${literature.file}`}
-            className="mr-3"
-          >
+          <Button href={`${fileURL}/${literature.file}`} className="mr-3">
             Download <BsCloudDownload />
           </Button>
           <Button onClick={() => history.push(`/read/${literature.id}`)}>

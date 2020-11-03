@@ -1,7 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-const Literature = ({ id, title, author, year }) => {
+import { coverURL } from '../config/config';
+
+const Literature = ({ id, title, author, year, cover }) => {
   const history = useHistory();
   return (
     <div
@@ -9,7 +11,7 @@ const Literature = ({ id, title, author, year }) => {
       onClick={() => history.push(`/detail/${id}`)}
     >
       <img
-        src={'http://localhost:5000/covers/cover.jpg'}
+        src={`${coverURL}/${cover}`}
         alt={title}
         className="mb-3"
         style={{

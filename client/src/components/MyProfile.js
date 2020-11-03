@@ -43,7 +43,7 @@ const MyProfile = (props) => {
               </Col>
               <Col md="auto">
                 <img
-                  src={`http://localhost:5000/photos/${photo}`}
+                  src={photo}
                   alt="photo"
                   style={{
                     display: 'block',

@@ -78,10 +78,7 @@ const NavBar = () => {
                   </Popover>
                 }
               >
-                <img
-                  src={`http://localhost:5000/photos/${state.user.photo}`}
-                  style={style}
-                />
+                <img src={state.user.photo} style={style} />
               </OverlayTrigger>
             </Nav>
           )}

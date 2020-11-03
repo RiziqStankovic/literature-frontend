@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import PDFViewer from '../components/PDF/AllPages';
 import { PageLoading } from '../components/Loading';
-import { API } from '../config/config';
+import { API, fileURL } from '../config/config';
 
 const Read = () => {
   const { id } = useParams();
@@ -33,7 +33,7 @@ const Read = () => {
     <h1>Error!</h1>
   ) : (
     <div>
-      <PDFViewer url={`http://localhost:5000/files/${literature.file}`} />
+      <PDFViewer url={`${fileURL}/${literature.file}`} />
     </div>
   );
 };
