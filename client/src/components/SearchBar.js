@@ -6,7 +6,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 const schema = yup.object({
-  search: yup.string().min(3).required(),
+  search: yup.string().required(),
 });
 
 const SearchBar = () => {
@@ -16,7 +16,6 @@ const SearchBar = () => {
     <div>
       <Formik
         validationSchema={schema}
-        validateOnBlur={false}
         onSubmit={(values) => {
           history.push(`/search?q=${values.search}`);
         }}
@@ -24,7 +23,7 @@ const SearchBar = () => {
           search: '',
         }}
       >
-        {({ handleSubmit, handleChange, values, touched, isValid, errors }) => (
+        {({ handleSubmit, handleChange, values, errors }) => (
           <Form inline onSubmit={handleSubmit}>
             <Form.Control
               type="text"
@@ -44,6 +43,9 @@ const SearchBar = () => {
             >
               <AiOutlineSearch size="26px" color="white" />
             </Button>
+            <Form.Control.Feedback type="invalid">
+              Please enter a query in the search box above.
+            </Form.Control.Feedback>
           </Form>
         )}
       </Formik>

@@ -1,9 +1,15 @@
 import React from 'react';
-import './admin.css';
 import { Container } from 'react-bootstrap';
+import { useRouteMatch } from 'react-router-dom';
 import AddLiteratureForm from '../../components/AddLiteratureForm';
 
 const AddLiterature = () => {
+  let match = useRouteMatch({
+    path: '/admin',
+  });
+
+  match && require('./admin.css');
+
   return (
     <div className="admin">
       <Container>

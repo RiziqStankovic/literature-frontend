@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './admin.css';
 import { Table, DropdownButton, Dropdown, Container } from 'react-bootstrap';
+import { useRouteMatch } from 'react-router-dom';
 import { BsChevronLeft } from 'react-icons/bs';
 import { useQuery } from 'react-query';
 
@@ -10,6 +10,12 @@ import AddedLiteratures from '../../components/AddedLiteratures';
 import { PageLoading } from '../../components/Loading';
 
 const VerifyBook = () => {
+  let match = useRouteMatch({
+    path: '/admin',
+  });
+
+  match && require('./admin.css');
+
   const [selected, setSelected] = useState('');
   const { isLoading, data, refetch } = useQuery('getAdminLiteratures', () =>
     API.get('/literatures?year=0')

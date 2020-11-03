@@ -1,6 +1,6 @@
 import React from 'react';
-import './admin.css';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useRouteMatch } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
 import { API } from '../../config/config';
@@ -8,20 +8,22 @@ import { API } from '../../config/config';
 import { PageLoading } from '../../components/Loading';
 
 const useQueryMultiple = () => {
-  const res1 = useQuery('getAllDatas', () => API.get('/literatures'));
-  const res2 = useQuery('getAllUsers', () => API.get('/users'));
+  let match = useRouteMatch({
+    path: '/admin',
+  });
+
+  match && require('./admin.css');
+
+  const res1 = useQuery('getLiteratures', () => API.get('/literatures'));
+  const res2 = useQuery('getUsers', () => API.get('/users'));
 
   return [res1, res2];
 };
 
 const Dashboard = () => {
-  //   const { isLoading, data } = useQuery('getAllDatas', () =>
-  //     API.get('/literatures')
-  //   );
-
-  const datas = useQueryMultiple();
-  const literatures = datas[0];
-  const users = datas[1];
+  const res = useQueryMultiple();
+  const literatures = res[0];
+  const users = res[1];
 
   return literatures.isLoading || users.isLoading ? (
     <PageLoading />
