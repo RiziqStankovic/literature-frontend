@@ -15,7 +15,7 @@ exports.cloudUpload = (fieldName) => {
 
   const fileFilter = (req, file, cb) => {
     if (file.fieldname === 'file') {
-      fileType = 'epub';
+      fileType = 'pdf';
       limitSize = '5 MB';
     } else {
       fileType = 'image';
@@ -25,7 +25,7 @@ exports.cloudUpload = (fieldName) => {
     if (!file.mimetype.match(fileType)) {
       req.fileValidationError = {
         status: 'fail',
-        message: `Please select an ${fileType} file!`,
+        message: `Please select a ${fileType} file!`,
         code: 400,
       };
       return cb(new Error(`Please select an ${fileType} file!`), false);
