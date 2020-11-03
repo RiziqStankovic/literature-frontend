@@ -10,7 +10,7 @@ import {
 } from 'react-icons/bs';
 
 import { Context } from '../context/Context';
-import { API, fileURL, coverURL } from '../config/config';
+import { API, fileURL, coverURL, downloadURL } from '../config/config';
 
 // component
 import { PageLoading } from '../components/Loading';
@@ -90,7 +90,10 @@ const Detail = () => {
               style={{ color: '#af2e1c' }}
             />
           </div>
-          <Button href={`${fileURL}/${literature.file}.pdf`} className="mr-3">
+          <Button
+            href={`${downloadURL}/${literature.file}.pdf`}
+            className="mr-3"
+          >
             Download <BsCloudDownload />
           </Button>
           <Button onClick={() => history.push(`/read/${literature.id}`)}>

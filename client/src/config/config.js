@@ -15,3 +15,6 @@ export const fileURL =
 
 export const coverURL =
   'https://res.cloudinary.com/nuraskiah/image/upload/w_540,c_scale/literature/files';
+
+export const downloadURL =
+  'https://res.cloudinary.com/nuraskiah/image/upload/fl_attachment/literature/files';

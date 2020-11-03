@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { useRouteMatch } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
 import { API } from '../../config/config';
@@ -8,12 +7,6 @@ import { API } from '../../config/config';
 import { PageLoading } from '../../components/Loading';
 
 const useQueryMultiple = () => {
-  let match = useRouteMatch({
-    path: '/admin',
-  });
-
-  match && require('./admin.css');
-
   const res1 = useQuery('getLiteratures', () => API.get('/literatures'));
   const res2 = useQuery('getUsers', () => API.get('/users'));
 
@@ -29,6 +22,14 @@ const Dashboard = () => {
     <PageLoading />
   ) : (
     <div className="admin">
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            body {
+              background-color: #f9f9f9;
+            }`,
+        }}
+      />
       <Container>
         <Row>
           <Col>
