@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         as: 'user',
       });
       Literature.hasMany(models.Bookmark, {
+        foreignKey: 'literatureId',
         as: 'bookmarks',
       });
     }
@@ -33,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Literatures',
+      modelName: 'Literature',
     }
   );
   return Literature;

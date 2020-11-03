@@ -31,9 +31,8 @@ router.get('/users', isAuth, isAdmin, getUsers);
 router.patch('/user/:id', isAuth, upload('photo'), updateUser);
 
 router.get('/literatures?', isAuth, getLiteratures);
-router.get('/user-literatures/:id', isAuth, getUserLiteratures);
 router.get('/literature/:id', isAuth, getLiterature);
-router.post('/literature', isAuth, upload('literature'), addLiterature);
+router.post('/literature', isAuth, upload('file'), addLiterature);
 router.patch('/literature/:id', isAuth, editLiterature);
 router.delete('/literature/:id', isAuth, isAdmin, deleteLiterature);
 

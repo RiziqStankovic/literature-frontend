@@ -23,7 +23,7 @@ exports.updateUser = async (req, res) => {
     const [updated] = await User.update(
       {
         ...req.body,
-        photo: req.file.filename,
+        photo: req.file.path,
       },
       {
         where: {

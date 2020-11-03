@@ -2,3 +2,15 @@
 
 # dependencies
 /node_modules
+
+# Logs
+npm-debug.log*
+logs
+*.log
+
+# dotenv
+.env
+.env.test
+
+public/
+api.http

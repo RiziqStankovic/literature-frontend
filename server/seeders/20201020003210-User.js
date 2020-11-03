@@ -3,18 +3,21 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert(
-      'People',
+      'Users',
       [
         {
-          email: 'admin@literatures.com',
+          email: 'admin@literature.com',
           password:
             '$2b$10$wU6wSvnsFQj76W1rCnl4ZOPdFHiNNNKsHTWuyHEEP1BldrWrAF4Ne',
           fullName: 'Administrator',
           gender: 'Other',
           phone: '000000000000',
-          address: 'Blue Planet',
-          photo: 'new-user.png',
+          address: 'Indonesia',
+          photo:
+            'https://res.cloudinary.com/nuraskiah/image/upload/v1604094193/new-user.png',
           role: 'admin',
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ],
       {}
