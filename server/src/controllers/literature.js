@@ -28,7 +28,10 @@ exports.getLiteratures = async (req, res) => {
         ],
       },
 
-      order: [[sort || 'id', sort === 'title' || 'status' ? 'ASC' : 'DESC']],
+      order: [
+        ['id', 'DESC'],
+        [sort || '', sort === 'title' || 'status' ? 'ASC' : 'DESC'],
+      ],
 
       include: [
         {

@@ -402,7 +402,7 @@ td {
 
 td:nth-child(2) {
   text-align: left;
-  /* width: 25%; */
+  width: 350px;
 }
 /* 
 td:first-child {
