@@ -17,7 +17,7 @@ exports.getLiteratures = async (req, res) => {
           },
           {
             title: {
-              [Op.like]: `%${title || ''}%`,
+              [Op.iLike]: `%${title || ''}%`,
             },
           },
           {
@@ -52,43 +52,6 @@ exports.getLiteratures = async (req, res) => {
     res.send({
       status: 'success',
       message: 'Literatures fetched successfully',
-      data,
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      status: 'error',
-      message: 'Internal Server Error',
-      code: 500,
-    });
-  }
-};
-
-exports.getUserLiteratures = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const data = await Literature.findAll({
-      where: {
-        userId: id,
-      },
-      include: [
-        {
-          model: User,
-          as: 'user',
-          attributes: { exclude: ['password', 'createdAt', 'updatedAt'] },
-        },
-      ],
-      attributes: {
-        exclude: ['createdAt', 'updatedAt', 'userId'],
-      },
-      order: [
-        ['status', 'ASC'],
-        ['id', 'DESC'],
-      ],
-    });
-    res.send({
-      status: 'success',
-      message: 'User literatures fetched successfully',
       data,
     });
   } catch (error) {

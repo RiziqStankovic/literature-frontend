@@ -1,4 +1,4 @@
-const { Literatures, Bookmark } = require('../../models');
+const { Literature, Bookmark } = require('../../models');
 
 exports.getBookmarks = async (req, res) => {
   try {
@@ -9,7 +9,7 @@ exports.getBookmarks = async (req, res) => {
       },
       include: [
         {
-          model: Literatures,
+          model: Literature,
           as: 'literature',
           attributes: ['id', 'title', 'author', 'year', 'status'],
           include: [
@@ -49,7 +49,7 @@ exports.addBookmark = async (req, res) => {
       literatureId,
     });
 
-    const { id, title } = await Literatures.findOne({
+    const { id, title } = await Literature.findOne({
       where: {
         id: literatureId,
       },
@@ -83,7 +83,7 @@ exports.removeBookmark = async (req, res) => {
         literatureId,
       },
     });
-    const { id, title } = await Literatures.findOne({
+    const { id, title } = await Literature.findOne({
       where: {
         id: literatureId,
       },

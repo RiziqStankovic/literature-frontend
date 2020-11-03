@@ -11,7 +11,6 @@ const { getUsers, updateUser } = require('../controllers/user');
 
 const {
   getLiteratures,
-  getUserLiteratures,
   getLiterature,
   addLiterature,
   editLiterature,
