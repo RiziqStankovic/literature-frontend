@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './admin.css';
 import { Table, DropdownButton, Dropdown, Container } from 'react-bootstrap';
 import { BsChevronLeft } from 'react-icons/bs';
 import { useQuery } from 'react-query';

@@ -11,7 +11,7 @@ exports.getBookmarks = async (req, res) => {
         {
           model: Literature,
           as: 'literature',
-          attributes: ['id', 'title', 'author', 'year', 'status'],
+          attributes: ['id', 'title', 'author', 'year', 'file', 'status'],
           include: [
             {
               model: Bookmark,
@@ -21,7 +21,7 @@ exports.getBookmarks = async (req, res) => {
           ],
         },
       ],
-      attributes: [],
+      attributes: ['id'],
       order: [['id', 'DESC']],
     });
 

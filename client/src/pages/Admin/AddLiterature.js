@@ -1,4 +1,5 @@
 import React from 'react';
+import './admin.css';
 import { Container } from 'react-bootstrap';
 import AddLiteratureForm from '../../components/AddLiteratureForm';
 

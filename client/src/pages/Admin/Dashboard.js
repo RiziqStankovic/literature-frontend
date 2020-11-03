@@ -1,4 +1,5 @@
 import React from 'react';
+import './admin.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useQuery } from 'react-query';
 

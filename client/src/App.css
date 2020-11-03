@@ -365,7 +365,7 @@ a.dropdown-item:hover {
 /* Admin */
 .admin {
   background-color: #f9f9f9;
-  height: 100vh;
+  /* height: 100vh; */
   width: 100%;
   color: black;
   padding-top: 140px;
