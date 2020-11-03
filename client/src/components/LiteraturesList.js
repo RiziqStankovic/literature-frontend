@@ -30,7 +30,7 @@ const LiteraturesList = ({ literatures, profile }) => {
               title={literature.title}
               author={literature.author}
               year={literature.year}
-              cover={literature.file.split('.')[0] + '.jpg'}
+              cover={literature.file + '.jpg'}
               key={i}
             />
           </div>

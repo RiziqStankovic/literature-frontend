@@ -33,7 +33,7 @@ const Read = () => {
     <h1>Error!</h1>
   ) : (
     <div>
-      <PDFViewer url={`${fileURL}/${literature.file}`} />
+      <PDFViewer url={`${fileURL}/${literature.file}.pdf`} />
     </div>
   );
 };

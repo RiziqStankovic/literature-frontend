@@ -91,7 +91,7 @@ const AddedLiteratures = (props) => {
         <td className="align-middle">{props.title}</td>
         <td className="align-middle">{props.author}</td>
         <td className="align-middle">{props.isbn}</td>
-        <td className="align-middle">{props.file}</td>
+        <td className="align-middle">{props.file + '.pdf'}</td>
         <td className={statusClass}>{props.status}</td>
         <td className="align-middle">{action}</td>
       </tr>

@@ -63,7 +63,7 @@ const Detail = () => {
       <Row>
         <Col md={5}>
           <img
-            src={`${coverURL}/${literature.file.split('.')[0]}.jpg`}
+            src={`${coverURL}/${literature.file}.jpg`}
             alt="cover"
             style={cover}
           />
@@ -90,7 +90,7 @@ const Detail = () => {
               style={{ color: '#af2e1c' }}
             />
           </div>
-          <Button href={`${fileURL}/${literature.file}`} className="mr-3">
+          <Button href={`${fileURL}/${literature.file}.pdf`} className="mr-3">
             Download <BsCloudDownload />
           </Button>
           <Button onClick={() => history.push(`/read/${literature.id}`)}>
