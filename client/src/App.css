@@ -343,6 +343,7 @@ small {
 #dropdown {
   padding: 7px 10px;
   float: right;
+  background-color: #af2e1c;
 }
 
 .dropdown-toggle::before {
@@ -414,9 +415,9 @@ td:nth-last-child(2) {
   width: 10%;
 } */
 
-td:last-child {
+/* td:last-child {
   width: 225px;
-}
+} */
 
 .approve,
 .reject {
