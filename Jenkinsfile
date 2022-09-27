@@ -9,7 +9,7 @@ pipeline{
                 stage ('Delete container and images & git pull'){
                         steps{
                                 sshagent([secret]) {
-                                        sh """ssh -o StrictHostKeyChecking=yes ${server} << EOF
+                                        sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
                                         cd ${dir}
                                         docker-compose down
                                         docker system prune -f
