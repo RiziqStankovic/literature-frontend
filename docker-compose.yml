@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+ frontend:
+   build: .
+   container_name: fe
+   image: ziq02/literature-fe:v1
+   stdin_open: true
+   ports:
+    - 3030:3000
