@@ -1,4 +1,4 @@
-def secret = 'riziq'
+def secret = 'github'
 def server = 'ziq@103.187.147.66'
 def dir = '/home/ziq/literature-frontend'
 def branch = 'production'
