@@ -1,6 +1,6 @@
 def secret = 'riziq'
-def server = 'cicds@103.189.235.96'
-def dir = 'literature-frontend'
+def server = 'ziq@103.187.147.66'
+def dir = '/home/ziq/literature-frontend'
 def branch = 'production'
 
 pipeline{
