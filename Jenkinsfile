@@ -24,7 +24,7 @@ pipeline{
                 sshagent([secret]) {
                     sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
                     cd ${directory}
-                    docker-compose build
+                    # docker build -t nama:tag .
                     exit
                     EOF"""
                 }

@@ -2,7 +2,7 @@ version: '3.8'
 services:
  frontend:
    build: .
-   container_name: fe
+   container_name: fe2
    image: ziq02/literature-fe:v1
    stdin_open: true
    ports:
