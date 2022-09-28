@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 export const API = axios.create({
-  baseURL: 'http://localhost:5000/api/v1'
-  // baseURL: 'https://api.ziq.studentdumbways.my.id/api/v1',
+   baseURL: 'https://api.ziq.studentdumbways.my.id/api/v1',
 });
 
 export const setToken = (token) => {
