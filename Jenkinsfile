@@ -12,9 +12,9 @@ pipeline{
                                 sshagent([secret]) {
                                         sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
                                         cd ${dir}
-                                        docker-compose down
-                                        docker system prune -f
-                                        git pull origin1 ${branch}
+                                        #docker-compose down
+                                        #docker system prune -f
+                                        #git pull origin1 ${branch}
                                         exit
                                         EOF"""
                                 }
@@ -36,7 +36,7 @@ pipeline{
                                 sshagent([secret]) {
                                         sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
                                         cd ${dir}
-                                        docker-compose up -d
+                                        #docker-compose up -d
                                         exit
                                         EOF"""
                                 }
@@ -44,7 +44,12 @@ pipeline{
                         }
 
                }
-
+        stage ('Send Notification'){
+                        steps{
+                                discordSend description: 'Backend Pipeline Succesfull', footer: '', image: '', link: '', result: '', scmWebUrl: '', thumbnail: '', title: 'Jenkins Notif',
+                                webhookURL: 'https://discord.com/api/webhooks/1024839606530756639/cDLiwRvd7ESHE1BEk0hEJkUXhnBDximF08i5GbthGZMXmgaKJp8m1VXppUNQUpL0s0Zc'
+				}
+			}
         }
 
 }
