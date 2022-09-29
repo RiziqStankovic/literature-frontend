@@ -2,7 +2,7 @@ def secret = 'github'
 def server = 'ziq@103.187.147.66'
 def dir = '/home/ziq/literature-frontend'
 def branch = 'production'
-def images = 'ziq02/literature-fe:v2'
+def images = 'ziq02/literature-fe01:v1'
 
 pipeline{
         agent any
@@ -25,7 +25,7 @@ pipeline{
                                 sshagent([secret]) {
                                         sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
                                         cd ${dir}
-                                        #docker-compose build
+                                        docker build -t ${images} .
                                         exit
                                         EOF"""
                                 }

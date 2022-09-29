@@ -2,8 +2,8 @@ version: '3.8'
 services:
  frontend:
    build: .
-   container_name: fe02
-   image: ziq02/literature-fe:v2
+   container_name: fe01
+   image: ziq02/literature-fe01:v1
    stdin_open: true
    ports:
-    - 3031:3000
+    - 3030:3000
