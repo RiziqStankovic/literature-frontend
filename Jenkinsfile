@@ -14,7 +14,7 @@ pipeline{
                                         cd ${dir}
                                         #docker-compose down
                                         #docker system prune -f
-                                        #git pull origin1 ${branch}
+                                        git pull origin1 ${branch}
                                         exit
                                         EOF"""
                                 }
@@ -25,7 +25,7 @@ pipeline{
                                 sshagent([secret]) {
                                         sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
                                         cd ${dir}
-                                        #docker build -t ${images} .
+                                        #docker-compose build
                                         exit
                                         EOF"""
                                 }
@@ -36,7 +36,7 @@ pipeline{
                                 sshagent([secret]) {
                                         sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
                                         cd ${dir}
-                                        #docker-compose up -d
+                                        docker-compose up -d
                                         exit
                                         EOF"""
                                 }
