@@ -46,7 +46,7 @@ pipeline{
                }
         stage ('Send Notification'){
                         steps{
-                                discordSend description: 'Backend Pipeline Succesfull', footer: '', image: '', link: '', result: '', scmWebUrl: '', thumbnail: '', title: 'Jenkins Notif',
+                                discordSend description: 'Frontend Pipeline Succesfull', footer: '', image: '', link: '', result: '', scmWebUrl: '', thumbnail: '', title: 'Jenkins Notif',
                                 webhookURL: 'https://discord.com/api/webhooks/1024839606530756639/cDLiwRvd7ESHE1BEk0hEJkUXhnBDximF08i5GbthGZMXmgaKJp8m1VXppUNQUpL0s0Zc'
 				}
 			}
