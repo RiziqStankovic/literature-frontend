@@ -25,7 +25,7 @@ pipeline{
                                 sshagent([secret]) {
                                         sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
                                         cd ${dir}
-                                        docker build -t ${images} .
+                                        #docker build -t ${images} .
                                         exit
                                         EOF"""
                                 }

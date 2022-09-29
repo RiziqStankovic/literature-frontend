@@ -6,4 +6,5 @@ services:
    image: ziq02/literature-fe01:v1
    stdin_open: true
    ports:
-    - 3030:3000
+    - 3033:3000
+    - 3000:3000
