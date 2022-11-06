@@ -1,6 +1,6 @@
 def secret = 'github'
-def server = 'ziq@103.187.147.66'
-def dir = '/home/ziq/literature-frontend'
+def server = 'fasha@103.189.234.200'
+def dir = '/home/fasha/literature-frontend'
 def branch = 'production'
 def images = 'ziq02/literature-fe01:v1'
 
