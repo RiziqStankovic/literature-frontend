@@ -1,4 +1,4 @@
-def secret = 'github'
+def secret = 'RiziqStankovic'
 def server = 'fasha@103.189.234.200'
 def dir = '/home/fasha/literature-frontend'
 def branch = 'production'
