@@ -1,0 +1,32 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "production" ]
+  pull_request:
+    branches: [ "production" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile REPO:1
+      
+    - name: Log in to GitHub container registry
+      uses: docker/login-action@v1.10.0
+        with:
+          registry: ghcr.io
+          username: ${{ actor }}
+          password: ${{ token }}
+
+    - name: Build and push container image to registry
+      uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ghcr.io/REPO:1
+          file: ./Dockerfile
