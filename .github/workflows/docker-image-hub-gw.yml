@@ -24,4 +24,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ziq02/test-fe:latest
+          tags: ziq02/gw:test2
